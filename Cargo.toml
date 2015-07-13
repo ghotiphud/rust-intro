@@ -2,3 +2,11 @@
 name = "rust_intro"
 version = "0.1.0"
 authors = ["Yale Cason <yale.cason@gmail.com>"]
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[[bin]]
+name = "hello"
+path = "src/hello.rs"

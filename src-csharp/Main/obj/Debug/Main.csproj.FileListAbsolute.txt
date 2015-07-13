@@ -1,0 +1,1 @@
+C:\Users\Yale\dev\rust-intro\src-csharp\Main\bin\Debug\Main.exe.config
