@@ -6,32 +6,40 @@
 		}
 	],
 	"build_systems":
-    [
-        {
-        	"name":"CargoBuild",
-		    "cmd": ["cargo", "build"],
-		    "file_regex": "^(.*?):([0-9]+):([0-9]+):\\s[0-9]+:[0-9]+\\s(.*)$",
-		    "syntax": "Packages/Makefile/Make.build-language",
-		    "selector": "source.rust",
+	[
+		{
+			"name":"CargoBuild",
+			"cmd": ["cargo", "build"],
+			"file_regex": "^(.*?):([0-9]+):([0-9]+):\\s[0-9]+:[0-9]+\\s(.*)$",
+			"syntax": "Packages/Makefile/Make.build-language",
+			"selector": "source.rust",
 
-		    "variants": [
-		    	{
-		            "cmd": ["cargo", "run", "--bin", "main"],
-		            "name": "Run Main"
-		        },
-		        {
-		            "cmd": ["cargo", "run", "--bin", "hello"],
-		            "name": "Run Hello"
-		        },
-		        {
-		            "cmd": ["cargo", "test"],
-		            "name": "Test"
-		        },
-		        {
+			"variants": [
+				{
+					"cmd": ["cargo", "run", "--bin", "main"],
+					"name": "Run Main"
+				},
+				{
+					"cmd": ["cargo", "run", "--bin", "hello"],
+					"name": "Run Hello"
+				},
+				{
+					"cmd": ["cargo", "run", "--bin", "memory"],
+					"name": "Run Memory"
+				},
+				{
+					"cmd": ["cargo", "run", "--bin", "types"],
+					"name": "Run Types"
+				},
+				{
+					"cmd": ["cargo", "test"],
+					"name": "Test"
+				},
+				{
 					"name":"Release",
-		    		"cmd": ["cargo", "build", "--release"],
-		        }
-		    ]
+					"cmd": ["cargo", "build", "--release"],
+				}
+			]
 		}
-    ]
+	]
 }

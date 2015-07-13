@@ -1,0 +1,18 @@
+
+.reveal table {
+	font-size: 80%;
+}
+
+.reveal table td + td, 
+.reveal table th + th {
+	border-left: 1px dotted #666;
+}
+
+.reveal table th {
+	border-bottom: 7px double;
+	padding-bottom: .1em;
+}
+
+.reveal pre {
+	width: 95%;
+}

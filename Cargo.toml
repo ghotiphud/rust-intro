@@ -10,3 +10,11 @@ path = "src/main.rs"
 [[bin]]
 name = "hello"
 path = "src/hello.rs"
+
+[[bin]]
+name = "memory"
+path = "src/memory.rs"
+
+[[bin]]
+name = "types"
+path = "src/types.rs"
