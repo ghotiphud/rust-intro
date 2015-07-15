@@ -214,40 +214,101 @@
 				<section id="type-safety" data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
 						# Type Safety
-						### Primative Types
+						### Numeric Types
 
 						```rust
-						
+						fn numeric_types() {
+						    let x = 2_i32;
+
+						    let mut y = x as i64;
+						    y = 4;
+
+						    let z: u8 = 8;
+
+						    println!("x:{:?} y:{:?}, z:{:?}", x, y, z);
+						}
+						```
+
+						```rust
+						x:2 y:4, z:8
 						```
 
 						;;;
 
 						# Type Safety
-
-
-						;;;
-
-						# Vertical 2
-					</script>
-				</section>
-
-				<section id="io-safety" data-markdown data-separator-vertical="^\n;;;\n$">
-					<script type="text/template">
-						# IO Safety
+						### String Types
 
 						```rust
-						fn main() {
-						    let mut x = vec![1, 2]; //Create vec owned by x
+						fn string_types() {
+						    let s = "a string";
+						    let mut string = s.to_string();
 
-						    let y = &x[0]; //Borrow(Reference) the first element of x
+						    string.push_str(", hi!");
 
-						    x.push(3); //Error: might invalidate reference y
+						    print_type_of(&s);
+						    print_type_of(&string);
+
+						    println!("{:?}", s);
+						    println!("{:?}", string);
 						}
+						```
+
+						```rust
+						&'static str              '
+						collections::string::String
+						"a string"
+						"a string, hi!"
 						```
 
 						;;;
 
-						# IO Safety
+						# Type Safety
+						### Structs
+
+						```rust
+						#[derive(Debug, Clone, Copy)]
+						struct Point { x: i32, y: i32 }
+
+						fn structs() {
+						    let origin = Point { x: 0, y: 0 };
+
+						    let mut not_origin = origin.clone();
+						    not_origin.x = 10;
+
+						    let mut not_origin2 = origin;
+						    not_origin2.y = 20;
+
+						    println!("{:?}, {:?}, {:?}", origin, not_origin, not_origin2);
+						}
+						```
+
+						```rust
+						Point { x: 0, y: 0 }, Point { x: 10, y: 0 }, Point { x: 0, y: 20 }
+						```
+
+						;;;
+
+						# Type Safety
+						### Enums
+
+						```rust
+						#[derive(Debug)]
+						enum Options { None, One, Two, Three }
+
+						fn enums() {
+						    let option = Options::One;
+						    let option_str = match option {
+						        Options::One => "Option One",
+						        Options::Two => "Option Two",
+						        _ => "The Rest",
+						    };
+						    println!("{:?}", option_str);
+						}
+						```
+
+						```rust
+						"Option One"
+						```
 					</script>
 				</section>
 
@@ -256,7 +317,7 @@
 
 				<section data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
-						# Fast
+						# Concurrent
 
 						;;;
 
@@ -270,10 +331,10 @@
 
 
 
-
+				
 				<section data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
-						# Concurrent
+						# Fast
 
 						;;;
 

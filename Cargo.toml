@@ -18,3 +18,7 @@ path = "src/memory.rs"
 [[bin]]
 name = "types"
 path = "src/types.rs"
+
+[[bin]]
+name = "concurrent"
+path = "src/concurrent.rs"

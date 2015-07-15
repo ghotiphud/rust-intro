@@ -1,46 +1,75 @@
+#![feature(core_intrinsics)]
 #[allow(dead_code)]
 
 fn main() {
-	primative_types();
+    numeric_types();
 
-	structs();
+    string_types();
 
-	enums();
+    structs();
+
+    enums();
 }
 
-fn primative_types() {
-	let x = 1_i32;
+fn numeric_types() {
+    let x = 2_i32;
 
-	let y = x as u64;
+    let mut y = x as i64;
+    y = 4;
 
-	let mut z: u8 = x as u8;
-	z = 8;
+    let z: u8 = 8;
 
-	println!("x:{:?} y:{:?}, z:{:?}", x, y, z);
+    println!("x:{:?} y:{:?}, z:{:?}", x, y, z);
 }
 
-#[derive(Debug)]
-struct Point {
-    x: i32,
-    y: i32,
+fn string_types() {
+    let s = "a string";
+    let mut string = s.to_string();
+
+    string.push_str(", hi!");
+
+    print_type_of(&s);
+    print_type_of(&string);
+
+    println!("{:?}", s);
+    println!("{:?}", string);
 }
+
+#[derive(Debug, Clone, Copy)]
+struct Point { x: i32, y: i32 }
 
 fn structs() {
-	let origin = Point { x: 0, y: 0 };
+    let origin = Point { x: 0, y: 0 };
 
-	println!("{:?}", origin);
+    let mut not_origin = origin.clone();
+    not_origin.x = 10;
+
+    let mut not_origin2 = origin;
+    not_origin2.y = 20;
+
+    println!("{:?}, {:?}, {:?}", origin, not_origin, not_origin2);
 }
 
 #[derive(Debug)]
-enum Options {
-	None,
-    One,
-    Two,
-    Three,
-}
+enum Options { None, One, Two, Three }
 
 fn enums() {
-	let option = Options::One;
+    let option = Options::One;
 
-	println!("{:?}", option);
+    let option_str = match option {
+        Options::One => "Option One",
+        Options::Two => "Option Two",
+        _ => "The Rest",
+    };
+
+    println!("{:?}", option_str);
+}
+
+
+fn print_type_of<T>(_: &T) -> () {
+    let type_name =
+        unsafe {
+            std::intrinsics::type_name::<T>()
+        };
+    println!("{}", type_name);
 }
