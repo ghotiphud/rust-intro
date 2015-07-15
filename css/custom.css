@@ -16,3 +16,7 @@
 .reveal pre {
 	width: 95%;
 }
+
+.reveal pre code {
+	max-height: 500px;
+}
