@@ -49,8 +49,10 @@
 
 				<section data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
-						# Safe
-						### What is safety? <!-- .element class="fragment" -->
+						<!-- .slide: data-background="img/iz_safe.gif" -->
+
+						# Safe <!-- .element class="drop-shadow" -->
+						### What is safety? <!-- .element class="fragment drop-shadow" -->
 
 						;;;
 
@@ -103,6 +105,12 @@
 
 				<section id="ownership" data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
+						<!-- .slide: data-background="img/trophy.gif" -->
+
+						# Ownership <!-- .element class="drop-shadow" -->
+
+						;;;
+
 						# Ownership
 						1. All resources have a clear owner.
 						2. Others can borrow from the owner.
@@ -237,6 +245,12 @@
 
 				<section id="memory-safety" data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
+						<!-- .slide: data-background="img/neuralizer.gif" -->
+
+						# Memory Safety <!-- .element class="drop-shadow" -->
+
+						;;;
+
 						# Memory Safety
 
 						```rust
@@ -295,153 +309,19 @@
 					</script>
 				</section>
 
-<!-- 
-				<section id="type-safety" data-markdown data-separator-vertical="^\n;;;\n$">
-					<script type="text/template">
-						# Type Safety
-						### Numeric Types
-
-						```rust
-						fn numeric_types() {
-						    let x = 2_i32;
-
-						    let mut y = x as i64;
-						    y = 4;
-
-						    let z: u8 = 8;
-
-						    println!("x:{:?} y:{:?}, z:{:?}", x, y, z);
-						}
-						```
-
-						```rust
-						x:2 y:4, z:8
-						```
-
-						;;;
-
-						# Type Safety
-						### String Types
-
-						```rust
-						fn string_types() {
-						    let s = "a string";
-						    let mut string = s.to_string();
-
-						    string.push_str(", hi!");
-
-						    print_type_of(&s);
-						    print_type_of(&string);
-
-						    println!("{:?}", s);
-						    println!("{:?}", string);
-						}
-						```
-
-						```rust
-						&'static str              '
-						collections::string::String
-						"a string"
-						"a string, hi!"
-						```
-
-						;;;
-
-						# Type Safety
-						### Structs
-
-						```rust
-						#[derive(Debug, Clone, Copy)]
-						struct Point { x: i32, y: i32 }
-
-						fn structs() {
-						    let origin = Point { x: 0, y: 0 };
-
-						    let mut not_origin = origin.clone();
-						    not_origin.x = 10;
-
-						    let mut not_origin2 = origin;
-						    not_origin2.y = 20;
-
-						    println!("{:?}, {:?}, {:?}", origin, not_origin, not_origin2);
-						}
-						```
-
-						```rust
-						Point { x: 0, y: 0 }, Point { x: 10, y: 0 }, Point { x: 0, y: 20 }
-						```
-
-						;;;
-
-						# Type Safety
-						### Enums
-
-						```rust
-						#[derive(Debug)]
-						enum Options { None, One, Two, Three }
-
-						fn enums() {
-						    let option = Options::One;
-						    let option_str = match option {
-						        Options::One => "Option One",
-						        Options::Two => "Option Two",
-						        _ => "The Rest",
-						    };
-						    println!("{:?}", option_str);
-						}
-						```
-
-						```rust
-						"Option One"
-						```
-					</script>
-				</section>
-
-				<section id="methods-traits" data-markdown data-separator-vertical="^\n;;;\n$">
-					<script type="text/template">
-						# Methods
-
-						```rust
-						#[derive(Debug, Clone, Copy)]
-						struct Point { x: i32, y: i32 }
-
-						impl Point {
-						    fn distance(&self, p2: Point) -> f64 {
-						        (((self.x - p2.x) as f64).powi(2) 
-						            + ((self.y - p2.y) as f64).powi(2)).sqrt()
-						    }
-						}
-
-						fn distance_method() {
-						    let p1 = Point { x: 0, y: 0 };
-						    let p2 = Point { x: 2, y: 0 };
-						    let p3 = Point { x: 0, y: 2 };
-
-						    println!("{:?}", p1.distance(p2));
-						    println!("{:?}", p2.distance(p3));
-						}
-						```
-
-						```rust
-						2
-						2.8284271247461903
-						```
-						
-						;;;
-
-						# Traits
-
-
-					</script>
-				</section>
- -->
 
 
 
 				<section data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
-						# Concurrent
-						### What are the issues? <!-- .element class="fragment" -->
+						<!-- .slide: data-background="img/bike-race.gif" -->
+
+						# Concurrent <!-- .element class="drop-shadow" -->
+
+						;;;
+
+						# Concurrency
+						### What are the issues?
 
 						;;;
 
@@ -452,13 +332,13 @@
 						;;;
 
 						## Models of Concurrency
-						1. Actor Model <!-- .element class="fragment" -->
+						1. Actor Model (Erlang) <!-- .element class="fragment" -->
 							- Data shared through message passing
 							- No aliasing of values
-						2. ReadOnly Model <!-- .element class="fragment" -->
+						2. ReadOnly Model (Haskell) <!-- .element class="fragment" -->
 							- Data shared by reference
 							- No mutation allowed
-						3. Locking Model <!-- .element class="fragment" -->
+						3. Locking Model (C++) <!-- .element class="fragment" -->
 							- Data shared by reference
 							- One thread allowed to mutate/read at a time.
 
@@ -579,17 +459,42 @@
 
 
 				
-				<section data-markdown data-separator-vertical="^\n;;;\n$">
+				<section id="fast" data-markdown data-separator-vertical="^\n;;;\n$">
 					<script type="text/template">
-						# Fast
+						<!-- .slide: data-background="img/flash.gif" -->
+
+						# Fast <!-- .element class="drop-shadow" -->
 
 						;;;
 
-						<!-- .slide: data-background="./bench-cnn.jpg" -->
+						# Ray tracer
+						[[pt 1]](http://xania.org/201505/two-commutes-with-rust)
+						[[pt 2]](http://xania.org/201505/on-rust-performance)
+
+						![](img/raytracer.png)
 
 						;;;
 
-						<!-- .slide: data-background="./bench-reddit.jpg" -->
+						# Ray tracer
+						[[pt 1]](http://xania.org/201505/two-commutes-with-rust)
+						[[pt 2]](http://xania.org/201505/on-rust-performance)
+
+						![](img/raytracer-perf.png)
+
+						;;;
+
+						<!-- .slide: data-background="img/bench-cnn.jpg" -->
+
+						;;;
+
+						<!-- .slide: data-background="img/bench-reddit.jpg" -->
+
+						;;;
+
+						## Micro benchmarks
+						### Buyer beware
+
+						[benchmarksgame.alioth.debian.org](http://benchmarksgame.alioth.debian.org/)
 					</script>
 				</section>
 
