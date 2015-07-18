@@ -1,6 +1,13 @@
+.pre-left-table + table {
+	float: left;
+}
+
+.pre-right-table + table {
+	float: right;
+}
 
 .reveal table {
-	font-size: 80%;
+	font-size: .7em;
 }
 
 .reveal table td + td, 

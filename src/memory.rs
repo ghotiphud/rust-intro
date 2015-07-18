@@ -5,6 +5,9 @@ fn main(){
     give_vec();
     println!("");
 
+    return_vec();
+    println!("");
+
     pass_vec();
     println!("");
 
@@ -25,13 +28,24 @@ fn give_vec() {
     let vec = vec![1, 2, 3];
     take_ownership(vec);
     // no longer have access to vec, so this would fail.
-    //println!("{:?}", vec);
+    // println!("{:?}", vec);
 }
 
-fn take_ownership(vec : Vec<i32>){
+fn take_ownership(vec: Vec<i32>){
     println!("owned vec: {:?}", vec);
 } //Vec has now gone out of scope and is immediately freed
 
+fn return_vec() {
+    let vec = vec![1, 2, 3];
+    let vec2 = return_ownership(vec);
+    // no longer have access to vec, so this would fail.
+    println!("returned vec: {:?}", vec2);
+} // Vec2 freed
+
+fn return_ownership(vec: Vec<i32>) -> Vec<i32> {
+    println!("owned vec: {:?}", vec);
+    vec // Return the vec from the function
+}
 
 fn pass_vec() {
     let vec = vec![4, 5, 6];
@@ -41,9 +55,9 @@ fn pass_vec() {
 }
 
 fn borrow_ref(vec: &Vec<i32>) {
+    // Passed in an immutable reference to our Vec.
     println!("borrowed vec: {:?}", vec);
-    // Notice that we've passed in an immutable reference to our Vec.
-    // This line would not compile due to trying to mutate an immutable reference
+    // Error: Cannot mutate an immutable reference.
     // vec.push(50);
 } //Borrow has gone out of scope
 
@@ -51,13 +65,12 @@ fn borrow_ref(vec: &Vec<i32>) {
 fn pass_vec_mut() {
     let mut vec = vec![7,8,9];
     borrow_mut(&mut vec);
-    // vec is still owned
     println!("vec: {:?}", vec);
 }
 
 fn borrow_mut(vec: &mut Vec<i32>) {
     println!("borrowed mut vec: {:?}", vec);
-    // in effect we have temporary ownership and guarantee that no one else can access vec.
+    // in effect we have temporary ownership.
     vec.push(50);
     vec[0] += 100;
 }

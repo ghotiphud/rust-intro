@@ -1,6 +1,12 @@
 #[allow(dead_code)]
 
 fn main() {
+    let mut x = vec![10, 20]; //Create vec owned by x
+    let y = &x[0]; //Borrow(Reference) the first element of x
+    x.push(30); //Error: might invalidate reference y
+}
+
+fn iterator() {
     let data = vec![1,2,3,4,5,6,7,8,9,10,128,222,12,13,14];
 
     println!("{:?}", sum_pos(&data));

@@ -8,8 +8,8 @@ name = "main"
 path = "src/main.rs"
 
 [[bin]]
-name = "hello"
-path = "src/hello.rs"
+name = "safety"
+path = "src/safety.rs"
 
 [[bin]]
 name = "memory"
@@ -22,3 +22,7 @@ path = "src/types.rs"
 [[bin]]
 name = "concurrent"
 path = "src/concurrent.rs"
+
+[[bin]]
+name = "traits"
+path = "src/traits.rs"

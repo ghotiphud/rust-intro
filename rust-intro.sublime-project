@@ -20,8 +20,8 @@
 					"name": "Run Main"
 				},
 				{
-					"cmd": ["cargo", "run", "--bin", "hello"],
-					"name": "Run Hello"
+					"cmd": ["cargo", "run", "--bin", "safety"],
+					"name": "Run Safety"
 				},
 				{
 					"cmd": ["cargo", "run", "--bin", "memory"],
@@ -34,6 +34,10 @@
 				{
 					"cmd": ["cargo", "run", "--bin", "concurrent"],
 					"name": "Run Concurrent"
+				},
+				{
+					"cmd": ["cargo", "run", "--bin", "traits"],
+					"name": "Run Traits"
 				},
 				{
 					"cmd": ["cargo", "test"],
